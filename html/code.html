@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="light" lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ミラノ2026 動画リストダッシュボード（ライトモード）</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Noto+Sans+JP:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "navy": "#0a1a3c",
+                        "ice-blue": "#f0f7ff",
+                        "background-light": "#ffffff",
+                        "border-light": "#e2e8f0",
+                        "text-muted": "#64748b"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans JP", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-1 {
+            font-variation-settings: 'FILL' 1;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .date-nav-mask {
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+        body {
+            background-color: #ffffff;
+            color: #0a1a3c;
+        }
+    </style>
+</head>
+<body class="font-display overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="flex flex-col items-center justify-center border-b border-slate-100 bg-white/80 backdrop-blur-md px-6 py-12 md:py-20 sticky top-0 z-[100]">
+<div class="flex flex-col items-center gap-4 text-primary w-full">
+<div class="size-16 mb-2">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h1 class="text-navy text-5xl md:text-8xl font-black leading-tight tracking-[0.1em] uppercase text-center">MILANO 2026</h1>
+<p class="text-primary text-sm md:text-base font-bold tracking-[0.5em] uppercase">Winter Olympics News</p>
+</div>
+</header>
+<main class="flex-1 flex flex-col w-full max-w-[1600px] mx-auto p-4 lg:p-8 gap-8">
+<section class="w-full bg-white rounded-2xl border border-slate-200 p-2 relative overflow-hidden shadow-sm">
+<div class="flex items-center">
+<button class="z-10 flex-shrink-0 size-10 flex items-center justify-center bg-ice-blue hover:bg-slate-100 text-navy rounded-lg transition-all border border-slate-200 ml-1">
+<span class="material-symbols-outlined text-2xl">chevron_left</span>
+</button>
+<div class="flex-1 overflow-x-auto no-scrollbar mx-2 date-nav-mask">
+<div class="flex items-center gap-2 py-1 px-4">
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-slate-50 border border-slate-200 hover:border-primary/40 transition-all group">
+<span class="text-[10px] font-bold text-text-muted">2月6日(金)</span>
+<span class="text-lg font-black text-navy">06</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-slate-50 border border-slate-200 hover:border-primary/40 transition-all group">
+<span class="text-[10px] font-bold text-text-muted">2月7日(土)</span>
+<span class="text-lg font-black text-navy">07</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-slate-50 border border-slate-200 hover:border-primary/40 transition-all group">
+<span class="text-[10px] font-bold text-text-muted">2月8日(日)</span>
+<span class="text-lg font-black text-navy">08</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-slate-50 border border-slate-200 hover:border-primary/40 transition-all group">
+<span class="text-[10px] font-bold text-text-muted">2月9日(月)</span>
+<span class="text-lg font-black text-navy">09</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-slate-50 border border-slate-200 hover:border-primary/40 transition-all group">
+<span class="text-[10px] font-bold text-text-muted">2月10日(火)</span>
+<span class="text-lg font-black text-navy">10</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-primary border border-primary shadow-lg shadow-primary/20 transition-all">
+<span class="text-[10px] font-bold text-white/90">2月12日(木)</span>
+<span class="text-lg font-black text-white">12</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-slate-50 border border-slate-200 hover:border-primary/40 transition-all group">
+<span class="text-[10px] font-bold text-text-muted">2月13日(金)</span>
+<span class="text-lg font-black text-navy">13</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-slate-50 border border-slate-200 hover:border-primary/40 transition-all group">
+<span class="text-[10px] font-bold text-text-muted">2月14日(土)</span>
+<span class="text-lg font-black text-navy">14</span>
+</button>
+<button class="flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl bg-slate-50 border border-slate-200 hover:border-primary/40 transition-all group">
+<span class="text-[10px] font-bold text-text-muted">2月15日(日)</span>
+<span class="text-lg font-black text-navy">15</span>
+</button>
+</div>
+</div>
+<button class="z-10 flex-shrink-0 size-10 flex items-center justify-center bg-ice-blue hover:bg-slate-100 text-navy rounded-lg transition-all border border-slate-200 mr-1">
+<span class="material-symbols-outlined text-2xl">chevron_right</span>
+</button>
+</div>
+</section>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-black tracking-tight text-navy flex items-center gap-3">
+<span class="size-8 rounded-lg bg-ice-blue flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">video_library</span>
+</span>
+                        ビデオニュース
+                    </h3>
+<div class="flex bg-slate-100 rounded-lg p-1 border border-slate-200">
+<button class="px-4 py-1.5 rounded-md bg-white shadow-sm text-[10px] font-bold text-navy">すべて</button>
+<button class="px-4 py-1.5 rounded-md hover:bg-white/50 text-[10px] font-bold text-text-muted">ハイライト</button>
+<button class="px-4 py-1.5 rounded-md hover:bg-white/50 text-[10px] font-bold text-text-muted">インタビュー</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+<img alt="アルペンスキー" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQWdbRtVgiZlAIQPeI33NvYHXZLYqqhgTkXxUfLyy7e_0L3G-_vdJKP3aiTj7uobQjGUcM3eb8ukXoDGSGazhLpuoZiR3ycGzYoUYb7BixejNNGatGSyZ4oP2DAQkAjcCnGI-HQmQRG_NJ8voIjwNFF2Dm_DH71OGMsBLHxJEDlRojQX_Webauq31K3_Lzym6vJGXwT53ivishv9dTGuK8fEXMK9mP1VPAB4H4Rmkz1R7dI3zA5uphSH050LwZOEgvfOzK48MCp_eg"/>
+<div class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full border border-white/20 tracking-wider uppercase">Live</div>
+<div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white">12:45</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all bg-navy/10">
+<div class="size-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center">
+<span class="material-symbols-outlined fill-1 text-2xl">play_arrow</span>
+</div>
+</div>
+</div>
+<h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">混合団体パラレル、イタリアが歴史的な金メダルを獲得</h4>
+<div class="flex items-center justify-between mt-2 text-text-muted text-[10px] font-bold">
+<span class="flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-sm">schedule</span> 45分前</span>
+<span class="uppercase tracking-tighter">12万回再生</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+<img alt="フィギュアスケート" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdf9WJTFcU5WzoRkwkXki5qME-to5D5I51BvKgU6TCgqx9Fb_ATVnfOqHDMUEdgnMDEHtdCMx3DnwZ5V-my0jkSuCL-lrbxlQtpALt-P5WvNTVCwmQkCnQpvBNwjXqJza2eah6lUAv3jocWfEuNFCAWFE1_km43aD4MkQfCDRed8EUo8Am24BzhCAy_Bz07WyDgNBg1ATevpe6GvyymXVbsveNcJq4HEQSVXpto6loj4Upz2W9PWgHPB52H9qgVBquCtlAMfsrkCC1"/>
+<div class="absolute top-3 left-3 bg-navy/70 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20 tracking-tight">フィギュアスケート</div>
+<div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white">04:12</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all bg-navy/10">
+<div class="size-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center">
+<span class="material-symbols-outlined fill-1 text-2xl">play_arrow</span>
+</div>
+</div>
+</div>
+<h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">フィギュアスケート 男子シングル ハイライト</h4>
+<div class="flex items-center justify-between mt-2 text-text-muted text-[10px] font-bold">
+<span class="flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-sm">schedule</span> 2時間前</span>
+<span class="uppercase tracking-tighter">120万回再生</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+<img alt="アイスホッケー" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5vjXsqZi-wc9Gqi7lp7J2TWUIwZnzjRixhkzw9f2ITZNDKSb6csGqTdGiceMuL0G44LzpCkT6xp5-3t8ooreAg_rQ0gpwZ9gG4lvQ8aWX-R-B0vx9LCUW3nrgeNGGREpw8S0dAZ5RsVAjKk5eRQoM5ykGi62lgEiEAwnpGzPwUx2SDRDB0FaUXWojbfcK_80JrAf1WbpUhn9AQMQi4LZ5nj_fQAx6yk9Gamu9k3hoKChRumZs4ljWjk6V6Mmjwq26ROUNGsHWwKqR"/>
+<div class="absolute top-3 left-3 bg-navy/70 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20 tracking-tight">アイスホッケー</div>
+<div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white">06:45</div>
+</div>
+<h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">準決勝プレビュー：宿命の対決がサン・シーロで再現</h4>
+<div class="flex items-center justify-between mt-2 text-text-muted text-[10px] font-bold">
+<span class="flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-sm">schedule</span> 4時間前</span>
+<span class="uppercase tracking-tighter">85万回再生</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+<img alt="スノーボード" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByKILewnrRcXUFo428lNxGfYkyjVaXqINHkrawUSuXiJ6i7TnoQSM8lj4Uak3bLRRkke04Ee-JcMuFInDnGpetoP9YYGF_0kW2qzRWCkZSHBkIvtRjchtpPLWk5vXkmnImn2HynUU1p_muRuFSE6PvaWurmuyezJIoZSH18taievbIB9-ksIHtJ3SxkUx8zUn3VwmirP7IJAzeWTFwRD-GWnVbPhjIJgo882BnWn_1ZnmI35M2HfUJM4tGeYQEmAAzwhJC1g4FvmUC"/>
+<div class="absolute top-3 left-3 bg-navy/70 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20 tracking-tight">スノーボード</div>
+<div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white">03:20</div>
+</div>
+<h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">ビッグエア：劇的な決勝ラウンド 全着地シーン</h4>
+<div class="flex items-center justify-between mt-2 text-text-muted text-[10px] font-bold">
+<span class="flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-sm">schedule</span> 5時間前</span>
+<span class="uppercase tracking-tighter">210万回再生</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+<img alt="カーリング" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAplRrQmE4452PbHqgI_MTOIDtlf15oiW-PzFh57r7_T-kiw0yLCWHEJGx8DrbFq6UKVnvu2p1MSIBLsKzRaBr787ZSQuvbWm5PQtYHuDrnSqZ_Kq9qKPdLmADLQ4z8hTiurp-rfpFqyLha7F8STw76OXN4ilwP2WTlHt7Ql712g8mNMKD6S1HGgQjQEWW_31Bv1BVj4K99rz0QVljSb45aZpYnsMkun1uEAWnkb2PWGQ15IXV5UkFjNFa1lodJ_O_9aSeR_ajThIMC"/>
+<div class="absolute top-3 left-3 bg-navy/70 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20 tracking-tight">カーリング</div>
+<div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white">08:15</div>
+</div>
+<h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">戦略の極み：イタリアが強豪カナダを破った秘策</h4>
+<div class="flex items-center justify-between mt-2 text-text-muted text-[10px] font-bold">
+<span class="flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-sm">schedule</span> 6時間前</span>
+<span class="uppercase tracking-tighter">42万回再生</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+<img alt="リュージュ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQWdbRtVgiZlAIQPeI33NvYHXZLYqqhgTkXxUfLyy7e_0L3G-_vdJKP3aiTj7uobQjGUcM3eb8ukXoDGSGazhLpuoZiR3ycGzYoUYb7BixejNNGatGSyZ4oP2DAQkAjcCnGI-HQmQRG_NJ8voIjwNFF2Dm_DH71OGMsBLHxJEDlRojQX_Webauq31K3_Lzym6vJGXwT53ivishv9dTGuK8fEXMK9mP1VPAB4H4Rmkz1R7dI3zA5uphSH050LwZOEgvfOzK48MCp_eg"/>
+<div class="absolute top-3 left-3 bg-navy/70 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20 tracking-tight">リュージュ</div>
+<div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white">02:50</div>
+</div>
+<h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">時速140km超の世界：コルティナコースの迫力映像</h4>
+<div class="flex items-center justify-between mt-2 text-text-muted text-[10px] font-bold">
+<span class="flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-sm">schedule</span> 7時間前</span>
+<span class="uppercase tracking-tighter">350万回再生</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+<img alt="スピードスケート" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdf9WJTFcU5WzoRkwkXki5qME-to5D5I51BvKgU6TCgqx9Fb_ATVnfOqHDMUEdgnMDEHtdCMx3DnwZ5V-my0jkSuCL-lrbxlQtpALt-P5WvNTVCwmQkCnQpvBNwjXqJza2eah6lUAv3jocWfEuNFCAWFE1_km43aD4MkQfCDRed8EUo8Am24BzhCAy_Bz07WyDgNBg1ATevpe6GvyymXVbsveNcJq4HEQSVXpto6loj4Upz2W9PWgHPB52H9qgVBquCtlAMfsrkCC1"/>
+<div class="absolute top-3 left-3 bg-navy/70 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20 tracking-tight">スピードスケート</div>
+<div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white">12:05</div>
+</div>
+<h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">男子5000m決勝で新五輪記録が誕生</h4>
+<div class="flex items-center justify-between mt-2 text-text-muted text-[10px] font-bold">
+<span class="flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-sm">schedule</span> 8時間前</span>
+<span class="uppercase tracking-tighter">110万回再生</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+<img alt="ボブスレー" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5vjXsqZi-wc9Gqi7lp7J2TWUIwZnzjRixhkzw9f2ITZNDKSb6csGqTdGiceMuL0G44LzpCkT6xp5-3t8ooreAg_rQ0gpwZ9gG4lvQ8aWX-R-B0vx9LCUW3nrgeNGGREpw8S0dAZ5RsVAjKk5eRQoM5ykGi62lgEiEAwnpGzPwUx2SDRDB0FaUXWojbfcK_80JrAf1WbpUhn9AQMQi4LZ5nj_fQAx6yk9Gamu9k3hoKChRumZs4ljWjk6V6Mmjwq26ROUNGsHWwKqR"/>
+<div class="absolute top-3 left-3 bg-navy/70 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20 tracking-tight">ボブスレー</div>
+<div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white">05:30</div>
+</div>
+<h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">密着：イタリア代表4人乗りチームの舞台裏</h4>
+<div class="flex items-center justify-between mt-2 text-text-muted text-[10px] font-bold">
+<span class="flex items-center gap-1 uppercase"><span class="material-symbols-outlined text-sm">schedule</span> 10時間前</span>
+<span class="uppercase tracking-tighter">24万回再生</span>
+</div>
+</div>
+</div>
+<div class="flex justify-center pt-8">
+<button class="px-12 py-4 bg-navy hover:bg-navy/90 text-white rounded-2xl text-xs font-black tracking-widest uppercase transition-all shadow-lg shadow-navy/20">
+                        もっと見る
+                    </button>
+</div>
+</div>
+</main>
+<footer class="mt-20 border-t border-slate-100 bg-ice-blue/30 py-16 px-6">
+<div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3 text-navy mb-6">
+<div class="size-8 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-xl font-black uppercase tracking-tight">Milano Cortina 2026</span>
+</div>
+<p class="text-text-muted text-sm max-w-sm leading-relaxed mb-6">
+                        イタリア・アルプスで開催される第25回冬季オリンピックに参加しましょう。ミラノ2026のエネルギー、情熱、そしてスピリットを体験してください。
+                    </p>
+<div class="flex gap-4">
+<a class="size-10 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-navy shadow-sm border border-slate-200" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="size-10 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-navy shadow-sm border border-slate-200" href="#">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</a>
+<a class="size-10 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-navy shadow-sm border border-slate-200" href="#">
+<span class="material-symbols-outlined text-xl">public</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-black text-[10px] uppercase tracking-[0.2em] text-navy/40 mb-6">コンテンツ</h5>
+<ul class="space-y-3">
+<li><a class="text-text-muted hover:text-primary transition-colors text-sm font-bold" href="#">ビデオギャラリー</a></li>
+<li><a class="text-text-muted hover:text-primary transition-colors text-sm font-bold" href="#">3Dアスリート統計</a></li>
+<li><a class="text-text-muted hover:text-primary transition-colors text-sm font-bold" href="#">ライブ配信</a></li>
+<li><a class="text-text-muted hover:text-primary transition-colors text-sm font-bold" href="#">ニュースアーカイブ</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-black text-[10px] uppercase tracking-[0.2em] text-navy/40 mb-6">クイックリンク</h5>
+<ul class="space-y-3">
+<li><a class="text-text-muted hover:text-primary transition-colors text-sm font-bold" href="#">チケットポータル</a></li>
+<li><a class="text-text-muted hover:text-primary transition-colors text-sm font-bold" href="#">交通アクセス</a></li>
+<li><a class="text-text-muted hover:text-primary transition-colors text-sm font-bold" href="#">コンタクトセンター</a></li>
+<li><a class="text-text-muted hover:text-primary transition-colors text-sm font-bold" href="#">ボランティア</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1600px] mx-auto mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row justify-between gap-4 text-[10px] font-black text-navy/40 uppercase tracking-widest">
+<p>© 2026 International Olympic Committee. MILANO CORTINA 2026.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">プライバシーポリシー</a>
+<a class="hover:text-primary transition-colors" href="#">利用規約</a>
+<a class="hover:text-primary transition-colors" href="#">クッキー設定</a>
+</div>
+</div>
+</footer>
+</div>
+
+</body></html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html class="light" lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ミラノ2026 動画ニュース速報</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "navy": "#0a1a3c",
+                        "ice-blue": "#f0f7ff",
+                        "background-light": "#ffffff",
+                        "border-light": "#e2e8f0",
+                        "text-muted": "#64748b"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans JP", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-1 {
+            font-variation-settings: 'FILL' 1;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .date-nav-mask {
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+        body {
+            background-color: #ffffff;
+            color: #0a1a3c;
+        }
+    </style>
+</head>
+<body class="font-display overflow-x-hidden">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <!-- Header -->
+        <header class="flex flex-col items-center justify-center border-b border-slate-100 bg-white/80 backdrop-blur-md px-6 py-6 md:py-8 sticky top-0 z-[100]">
+            <div class="flex flex-col items-center gap-3 text-primary w-full">
+                <div class="size-12 mb-1">
+                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+                    </svg>
+                </div>
+                <h1 class="text-navy text-4xl md:text-6xl font-black leading-tight tracking-[0.1em] uppercase text-center">MILANO 2026</h1>
+                <p class="text-primary text-xs md:text-sm font-bold tracking-[0.5em] uppercase">Winter Olympics News</p>
+            </div>
+            <!-- Date Navigation -->
+            <div class="w-full max-w-[1200px] mt-4">
+                <div class="flex items-center">
+                    <button id="dateNavLeft" class="z-10 flex-shrink-0 size-8 flex items-center justify-center bg-ice-blue hover:bg-slate-100 text-navy rounded-lg transition-all border border-slate-200">
+                        <span class="material-symbols-outlined text-xl">chevron_left</span>
+                    </button>
+                    <div id="dateNavScroll" class="flex-1 overflow-x-auto no-scrollbar mx-2 date-nav-mask">
+                        <div id="dateNavContainer" class="flex items-center gap-2 py-1 px-4">
+                            <!-- Date buttons will be dynamically generated -->
+                        </div>
+                    </div>
+                    <button id="dateNavRight" class="z-10 flex-shrink-0 size-8 flex items-center justify-center bg-ice-blue hover:bg-slate-100 text-navy rounded-lg transition-all border border-slate-200">
+                        <span class="material-symbols-outlined text-xl">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 flex flex-col w-full max-w-[1600px] mx-auto p-4 lg:p-8 gap-8">
+            <!-- News Grid Section -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-black tracking-tight text-navy flex items-center gap-3">
+                        <span class="size-8 rounded-lg bg-ice-blue flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-xl">video_library</span>
+                        </span>
+                        ニュース速報
+                    </h3>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="flex justify-center items-center py-20">
+                    <div class="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+                </div>
+
+                <!-- News Grid -->
+                <div id="newsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 hidden">
+                    <!-- News cards will be dynamically generated -->
+                </div>
+
+                <!-- Load More Button -->
+                <div id="loadMoreContainer" class="flex justify-center pt-8 hidden">
+                    <button id="loadMoreBtn" class="px-12 py-4 bg-navy hover:bg-navy/90 text-white rounded-2xl text-xs font-black tracking-widest uppercase transition-all shadow-lg shadow-navy/20">
+                        もっと見る
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-20 border-t border-slate-100 bg-ice-blue/30 py-8 px-6">
+            <div class="max-w-[1600px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black text-navy/40 uppercase tracking-widest">
+                <p>© 2026 International Olympic Committee. MILANO CORTINA 2026.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-5xl bg-navy rounded-2xl overflow-hidden shadow-2xl">
+            <button id="closeModal" class="absolute top-4 right-4 z-10 size-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <video id="modalVideo" class="w-full aspect-video" controls autoplay>
+                <source src="" type="video/mp4">
+            </video>
+            <div class="p-6">
+                <h3 id="modalTitle" class="text-white text-xl font-bold"></h3>
+                <p id="modalDate" class="text-white/60 text-sm mt-2"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_URL = 'https://to232fd3h5.execute-api.ap-northeast-1.amazonaws.com/prd/newslist';
+        const API_KEY = 'E58jesAEI22lCer7orcqw0h6FkMQFCw2fGr1oywa';
+
+        // State
+        let allNews = [];
+        let filteredNews = [];
+        let currentPage = 1;
+        let hasNext = true;
+        let selectedDate = null;
+        let isLoading = false;
+        const perPage = 20;
+        let displayCount = 0; // Number of items currently displayed
+
+        // DOM Elements
+        const newsGrid = document.getElementById('newsGrid');
+        const loadingState = document.getElementById('loadingState');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadMoreContainer = document.getElementById('loadMoreContainer');
+        const dateNavContainer = document.getElementById('dateNavContainer');
+        const dateNavScroll = document.getElementById('dateNavScroll');
+        const dateNavLeft = document.getElementById('dateNavLeft');
+        const dateNavRight = document.getElementById('dateNavRight');
+        const videoModal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDate = document.getElementById('modalDate');
+        const closeModal = document.getElementById('closeModal');
+
+        // Fetch news from API
+        async function fetchNews(page = 1, itemsPerPage = perPage) {
+            try {
+                const params = new URLSearchParams({
+                    page: page,
+                    per_page: itemsPerPage,
+                    sort: 'published_at',
+                    order: 'desc'
+                });
+
+                const response = await fetch(`${API_URL}?${params}`, {
+                    headers: {
+                        'x-api-key': API_KEY
+                    }
+                });
+
+                if (!response.ok) throw new Error('API request failed');
+                return await response.json();
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                return null;
+            }
+        }
+
+        // Format date and time (M/D HH:MM)
+        function formatDateTime(dateString) {
+            const date = new Date(dateString);
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${month}/${day} ${hours}:${minutes}`;
+        }
+
+        // Format date for display
+        function formatDateLabel(dateString) {
+            const date = new Date(dateString);
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+            const weekday = weekdays[date.getDay()];
+            return {
+                full: `${month}月${day}日(${weekday})`,
+                day: String(day).padStart(2, '0')
+            };
+        }
+
+        // Create news card HTML
+        function createNewsCard(item) {
+            const timeStr = formatDateTime(item.published_at);
+
+            const card = document.createElement('div');
+            card.className = 'group cursor-pointer';
+            card.innerHTML = `
+                <div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3 bg-slate-100 border border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+                    <video
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        preload="metadata"
+                        muted
+                        playsinline
+                    >
+                        <source src="${item.mp4_url}" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold text-white video-duration">--:--</div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all bg-navy/10">
+                        <div class="size-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined fill-1 text-2xl">play_arrow</span>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="font-bold text-base leading-tight text-navy group-hover:text-primary transition-colors line-clamp-2">${item.text}</h4>
+                <div class="flex items-center mt-2 text-text-muted text-[10px] font-bold">
+                    <span class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">schedule</span>
+                        ${timeStr}
+                    </span>
+                </div>
+            `;
+
+            // Load video metadata to get duration
+            const video = card.querySelector('video');
+            const durationEl = card.querySelector('.video-duration');
+
+            video.addEventListener('loadedmetadata', () => {
+                const duration = video.duration;
+                const mins = Math.floor(duration / 60);
+                const secs = Math.floor(duration % 60);
+                durationEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            });
+
+            // Click to open modal
+            card.addEventListener('click', () => {
+                openVideoModal(item);
+            });
+
+            return card;
+        }
+
+        // Render news grid
+        function renderNews(news, append = false) {
+            if (!append) {
+                newsGrid.innerHTML = '';
+            }
+
+            news.forEach(item => {
+                const card = createNewsCard(item);
+                newsGrid.appendChild(card);
+            });
+
+            loadingState.classList.add('hidden');
+            newsGrid.classList.remove('hidden');
+        }
+
+        // Extract unique dates from news
+        function extractDates(news) {
+            const dateMap = new Map();
+
+            news.forEach(item => {
+                const date = new Date(item.published_at);
+                const dateKey = date.toISOString().split('T')[0];
+                if (!dateMap.has(dateKey)) {
+                    dateMap.set(dateKey, {
+                        key: dateKey,
+                        date: date,
+                        ...formatDateLabel(item.published_at)
+                    });
+                }
+            });
+
+            return Array.from(dateMap.values()).sort((a, b) => a.date - b.date);
+        }
+
+        // Render date navigation
+        function renderDateNav(dates) {
+            dateNavContainer.innerHTML = '';
+
+            // Add "All" button
+            const allBtn = document.createElement('button');
+            allBtn.className = `flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl transition-all ${
+                selectedDate === null
+                    ? 'bg-primary border border-primary shadow-lg shadow-primary/20'
+                    : 'bg-slate-50 border border-slate-200 hover:border-primary/40'
+            }`;
+            allBtn.innerHTML = `
+                <span class="text-[10px] font-bold ${selectedDate === null ? 'text-white/90' : 'text-text-muted'}">すべて</span>
+                <span class="text-lg font-black ${selectedDate === null ? 'text-white' : 'text-navy'}">ALL</span>
+            `;
+            allBtn.addEventListener('click', () => filterByDate(null));
+            dateNavContainer.appendChild(allBtn);
+
+            dates.forEach(dateInfo => {
+                const btn = document.createElement('button');
+                const isSelected = selectedDate === dateInfo.key;
+                btn.className = `flex-shrink-0 flex flex-col items-center justify-center w-[90px] h-[56px] rounded-xl transition-all ${
+                    isSelected
+                        ? 'bg-primary border border-primary shadow-lg shadow-primary/20'
+                        : 'bg-slate-50 border border-slate-200 hover:border-primary/40'
+                }`;
+                btn.innerHTML = `
+                    <span class="text-[10px] font-bold ${isSelected ? 'text-white/90' : 'text-text-muted'}">${dateInfo.full}</span>
+                    <span class="text-lg font-black ${isSelected ? 'text-white' : 'text-navy'}">${dateInfo.day}</span>
+                `;
+                btn.addEventListener('click', () => filterByDate(dateInfo.key));
+                dateNavContainer.appendChild(btn);
+            });
+        }
+
+        // Filter news by date
+        function filterByDate(dateKey) {
+            selectedDate = dateKey;
+            displayCount = 0;
+
+            if (dateKey === null) {
+                filteredNews = [...allNews];
+            } else {
+                filteredNews = allNews.filter(item => {
+                    const itemDate = new Date(item.published_at).toISOString().split('T')[0];
+                    return itemDate === dateKey;
+                });
+            }
+
+            // Display first 20 items
+            const itemsToShow = filteredNews.slice(0, perPage);
+            displayCount = itemsToShow.length;
+            renderNews(itemsToShow);
+            renderDateNav(extractDates(allNews));
+
+            // Update load more button visibility
+            if (displayCount < filteredNews.length) {
+                loadMoreContainer.classList.remove('hidden');
+            } else {
+                loadMoreContainer.classList.add('hidden');
+            }
+        }
+
+        // Open video modal
+        function openVideoModal(item) {
+            modalVideo.querySelector('source').src = item.mp4_url;
+            modalVideo.load();
+            modalTitle.textContent = item.text;
+            modalDate.textContent = new Date(item.published_at).toLocaleString('ja-JP');
+            videoModal.classList.remove('hidden');
+            videoModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close video modal
+        function closeVideoModal() {
+            modalVideo.pause();
+            modalVideo.querySelector('source').src = '';
+            videoModal.classList.add('hidden');
+            videoModal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Load more news
+        function loadMore() {
+            const nextItems = filteredNews.slice(displayCount, displayCount + perPage);
+            displayCount += nextItems.length;
+            renderNews(nextItems, true);
+
+            // Update load more button visibility
+            if (displayCount >= filteredNews.length) {
+                loadMoreContainer.classList.add('hidden');
+            }
+        }
+
+        // Initialize
+        async function init() {
+            // Fetch all news at once (per_page=500 to get all items)
+            const data = await fetchNews(1, 500);
+
+            if (data && data.items) {
+                allNews = data.items;
+                filteredNews = [...allNews];
+
+                // Display first 20 items
+                const itemsToShow = filteredNews.slice(0, perPage);
+                displayCount = itemsToShow.length;
+                renderNews(itemsToShow);
+                renderDateNav(extractDates(allNews));
+
+                if (displayCount < filteredNews.length) {
+                    loadMoreContainer.classList.remove('hidden');
+                }
+            } else {
+                loadingState.innerHTML = '<p class="text-text-muted">ニュースを読み込めませんでした</p>';
+            }
+        }
+
+        // Event Listeners
+        loadMoreBtn.addEventListener('click', loadMore);
+        closeModal.addEventListener('click', closeVideoModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeVideoModal();
+        });
+
+        // Date navigation scroll
+        dateNavLeft.addEventListener('click', () => {
+            dateNavScroll.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+        dateNavRight.addEventListener('click', () => {
+            dateNavScroll.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVideoModal();
+        });
+
+        // Start the app
+        init();
+    </script>
+</body>
+</html>
