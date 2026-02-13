@@ -19,20 +19,25 @@ curl -s -H "x-api-key: E58jesAEI22lCer7orcqw0h6FkMQFCw2fGr1oywa" \
 
 ## Architecture
 
-### Single-File Structure
-- `index.html` - HTML、CSS（Tailwind）、JavaScriptをすべて含む単一ファイル
+### File Structure
+- `index.html` - HTMLマークアップ（Tailwind CSSクラス使用）
+- `css/style.css` - カスタムCSS（Tailwind `@apply` 含む）
+- `js/app.js` - アプリケーションロジック（API通信、レンダリング、モーダル等）
 - `html/code.html` - デザインテンプレート（参照用）
 
 ### API Integration
 - **Endpoint**: `https://to232fd3h5.execute-api.ap-northeast-1.amazonaws.com/prd/newslist`
 - **Auth Header**: `x-api-key`
-- **Parameters**: `page`, `per_page`, `sort`, `order`
+- **Parameters**: `page`, `per_page`, `sort`, `order`, `search_text`
 - **Response Fields**:
   - `mp4_url` - 動画の署名付きS3 URL
   - `text` - ニュース見出し
   - `published_at` - 公開日時
+  - `category` - カテゴリID（1のみ表示対象）
 
 ### Key Features
+- カテゴリフィルタリング（`category === 1` のニュースのみ表示）
+- デフォルト検索キーワード（`ミラノ・コルティナ五輪 冬季五輪`、OR検索）
 - 日付ナビゲーション（ヘッダー内、全データから日付抽出）
 - ニュースカード（video要素でサムネイル表示）
 - ページネーション（初期20件表示、「もっと見る」で追加読み込み）

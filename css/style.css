@@ -1,0 +1,20 @@
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.fill-1 {
+    font-variation-settings: 'FILL' 1;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.date-nav-mask {
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+body {
+    background-color: #ffffff;
+    color: #0a1a3c;
+}
