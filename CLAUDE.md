@@ -29,11 +29,28 @@ curl -s -H "x-api-key: E58jesAEI22lCer7orcqw0h6FkMQFCw2fGr1oywa" \
 - **Endpoint**: `https://to232fd3h5.execute-api.ap-northeast-1.amazonaws.com/prd/newslist`
 - **Auth Header**: `x-api-key`
 - **Parameters**: `page`, `per_page`, `sort`, `order`, `search_text`
+- **Pagination Note**: `per_page` は API 側で最大 `100` に制限される（速報用途として100件運用）
 - **Response Fields**:
   - `mp4_url` - 動画の署名付きS3 URL
   - `text` - ニュース見出し
   - `published_at` - 公開日時
   - `category` - カテゴリID（1のみ表示対象）
+
+### 動画表示条件
+- 画面表示対象は `category === 1` の親レコード。
+- APIレスポンスの `children`（子レコード）を参照し、`supervised = 1` の子のみ候補にする。
+- 候補が複数ある場合は `no` が最大の子（最新）を採用する。
+- 採用した子に `mp4_url` がある場合、そのURLを表示動画として使う。
+- 子が存在しない / `supervised = 1` がない / 採用子に `mp4_url` がない場合は、親レコードの `mp4_url` を使う。
+- この判定はニュースカードと動画モーダルの両方に同じルールで適用する。
+- `text` と `published_at` は親レコードの値を表示し、子レコードで上書きしない。
+
+#### 判定ロジック（擬似コード）
+```javascript
+effectiveVideoUrl = parent.mp4_url
+latest = max_by_no(parent.children where supervised == 1)
+if (latest && latest.mp4_url) effectiveVideoUrl = latest.mp4_url
+```
 
 ### Key Features
 - カテゴリフィルタリング（`category === 1` のニュースのみ表示）

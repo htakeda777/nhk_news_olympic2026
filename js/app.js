@@ -78,9 +78,39 @@ function formatDateLabel(dateString) {
     };
 }
 
+// 表示用の動画URLを決定（監修済み子レコードの最新noを優先）
+function getEffectiveVideoUrl(item) {
+    const parentMp4Url = item?.mp4_url || '';
+    const children = Array.isArray(item?.children) ? item.children : [];
+
+    let latestSupervisedChild = null;
+    let latestNo = Number.NEGATIVE_INFINITY;
+
+    children.forEach(child => {
+        if (Number(child?.supervised) !== 1) {
+            return;
+        }
+
+        const childNo = Number(child?.no);
+        const normalizedNo = Number.isFinite(childNo) ? childNo : Number.NEGATIVE_INFINITY;
+
+        if (normalizedNo > latestNo) {
+            latestNo = normalizedNo;
+            latestSupervisedChild = child;
+        }
+    });
+
+    if (latestSupervisedChild?.mp4_url) {
+        return latestSupervisedChild.mp4_url;
+    }
+
+    return parentMp4Url;
+}
+
 // Create news card HTML
 function createNewsCard(item) {
     const timeStr = formatDateTime(item.published_at);
+    const effectiveVideoUrl = getEffectiveVideoUrl(item);
 
     const card = document.createElement('div');
     card.className = 'group cursor-pointer';
@@ -92,7 +122,7 @@ function createNewsCard(item) {
                 muted
                 playsinline
             >
-                <source src="${item.mp4_url}" type="video/mp4">
+                <source src="${effectiveVideoUrl}" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div class="absolute bottom-3 left-3 right-12 z-10">
@@ -239,7 +269,7 @@ function filterByDate(dateKey) {
 
 // Open video modal
 function openVideoModal(item) {
-    modalVideo.querySelector('source').src = item.mp4_url;
+    modalVideo.querySelector('source').src = getEffectiveVideoUrl(item);
     modalVideo.load();
     modalTitle.textContent = item.text;
     modalDate.textContent = new Date(item.published_at).toLocaleString('ja-JP');
@@ -271,7 +301,7 @@ function loadMore() {
 
 // Initialize
 async function init() {
-    // Fetch all news at once (per_page=500 to get all items)
+    // 速報運用: API上限(100件)までを1回取得
     const data = await fetchNews(1, 500);
 
     if (data && data.items) {
