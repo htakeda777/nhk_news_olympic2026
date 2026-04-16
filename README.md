@@ -1,18 +1,22 @@
 # ミラノ2026 動画ニュース速報
 
-ミラノ・コルティナ2026冬季オリンピック関連ニュースを動画で表示するフロントエンドと、ニュース一覧を返す Lambda API のリポジトリです。
+ミラノ・コルティナ2026冬季オリンピック / パラリンピック関連ニュースを動画で表示するフロントエンドと、ニュース一覧を返す Lambda API のリポジトリです。
 
 ## 構成
 
-- `index.html`: 画面レイアウト
+- `index.html`: オリンピック向け画面レイアウト
+- `paralympic.html`: パラリンピック向け画面レイアウト
 - `css/style.css`: スタイル
-- `js/app.js`: API取得、一覧描画、日付フィルタ、モーダル再生
+- `js/app.js`: API取得、一覧描画、日付フィルタ、モーダル再生（両HTMLで共通利用）
 - `api/lambda.py`: ニュース一覧 API（MySQL `messages` テーブルを検索）
 - `api/table.sql`: `messages` テーブル定義
 
 ## 動かし方
 
-静的サイトなので、`index.html` をブラウザで開けば表示できます。
+静的サイトなので、ブラウザで対象HTMLを直接開けば表示できます。
+
+- `index.html`: オリンピックニュース
+- `paralympic.html`: パラリンピックニュース
 
 ## API
 
@@ -25,6 +29,8 @@
   - `sort` (`published_at` など)
   - `order` (`asc` / `desc`)
   - `search_text`（スペース区切り OR 検索）
+  - `date_from`（取得開始日）
+  - `date_to`（取得終了日）
 
 例:
 
@@ -35,6 +41,11 @@ curl -s -H "x-api-key: <YOUR_API_KEY>" \
 
 ## 画面表示ルール
 
+- `index.html` と `paralympic.html` は同じ `js/app.js` を利用します。
+- 各HTMLは `window.APP_CONFIG` で取得期間を指定します。
+  - オリンピック: `2026-02-06` から `2026-02-23`
+  - パラリンピック: `2026-03-06` から `2026-03-16`
+- デフォルト検索キーワードは `金 銀 銅`（スペース区切り OR 検索）です。
 - フロント表示対象は `category === 1` の親レコードのみ。
 - 動画URLは次の優先順で決定:
   1. `children` 内で `supervised = 1` の子を候補化
