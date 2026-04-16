@@ -2,6 +2,9 @@
 const API_URL = 'https://to232fd3h5.execute-api.ap-northeast-1.amazonaws.com/prd/newslist';
 const API_KEY = 'E58jesAEI22lCer7orcqw0h6FkMQFCw2fGr1oywa';
 
+// 外部設定（各HTMLから window.APP_CONFIG で注入、未設定時はオリンピック期間をフォールバック）
+const CONFIG = window.APP_CONFIG || {};
+
 // State
 let allNews = [];
 let filteredNews = [];
@@ -28,7 +31,7 @@ const modalDate = document.getElementById('modalDate');
 const closeModal = document.getElementById('closeModal');
 
 // デフォルト検索キーワード（OR検索: スペース区切り）
-const DEFAULT_SEARCH_TEXT = 'ミラノ・コルティナ五輪 冬季五輪';
+const DEFAULT_SEARCH_TEXT = '金 銀 銅';
 
 // Fetch news from API
 async function fetchNews(page = 1, itemsPerPage = perPage, searchText = DEFAULT_SEARCH_TEXT) {
@@ -38,7 +41,9 @@ async function fetchNews(page = 1, itemsPerPage = perPage, searchText = DEFAULT_
             per_page: itemsPerPage,
             sort: 'published_at',
             order: 'desc',
-            search_text: searchText
+            search_text: searchText,
+            date_from: CONFIG.date_from || '2026-02-06',
+            date_to: CONFIG.date_to || '2026-02-23'
         });
 
         const response = await fetch(`${API_URL}?${params}`, {
